@@ -102,7 +102,7 @@
           },
           "foreground": "#1F1F28",
           "background": "#7FB4CA",
-          "template": " \uf308 {{ .Context }}{{ if .Namespace }} \uf0c2 {{ .Namespace }}{{ end }} "
+          "template": " \uf308 {{ .Context }} "
         },
         {
           "type": "kubernetes",
@@ -116,7 +116,7 @@
           },
           "foreground": "#1F1F28",
           "background": "#7E9CD8",
-          "template": " \ue7b7 {{ .Context }}{{ if .Namespace }} \uf115 {{ .Namespace }}{{ end }} "
+          "template": " \ue7b7 {{ .Context }}{{ $ns := index . \"Namespace\" }}{{ if $ns }} \uf115 {{ $ns }}{{ end }} "
         },
         {
           "background": "#7AA89F",

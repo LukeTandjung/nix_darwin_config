@@ -59,6 +59,7 @@
               typstyle
               typst-live
               tinymist
+              aider-chat
             ];
           };
 
