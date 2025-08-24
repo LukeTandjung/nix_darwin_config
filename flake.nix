@@ -3,13 +3,17 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
-    stylix.url = "github:nix-community/stylix";
+    stylix.url = "github:nix-community/stylix/master";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-darwin = {
       url = "github:LnL7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -21,6 +25,7 @@
       stylix,
       nix-darwin,
       home-manager,
+      zen-browser,
     }:
     let
       system = "aarch64-darwin";
@@ -49,6 +54,10 @@
             dbeaver-bin
             postman
             notion-app
+            typst
+            typstyle
+            typst-live
+            tinymist
           ];
 
           system.primaryUser = "luketandjung";
@@ -82,6 +91,38 @@
             jetbrains-mono
           ];
 
+          services.spacebar = {
+            enable = true;
+            package = pkgs.spacebar;
+            config = {
+              position = "top";
+              display = "main";
+              height = 36;
+              title = "on";
+              spaces = "on";
+              clock = "on";
+              padding_left = 20;
+              padding_right = 20;
+              spacing_left = 25;
+              spacing_right = 15;
+              text_font = ''"JetBrains Mono:Regular:12.0"'';
+              icon_font = ''"Font Awesome 6 Free:Solid:12.0"'';
+              background_color = "0xff1f1f28";
+              foreground_color = "0xffdcd7ba";
+              power_icon_color = "0xffdcd7ba";
+              battery_icon_color = "0xffdcd7ba";
+              dnd_icon_color = "0xffdcd7ba";
+              clock_icon_color = "0xffdcd7ba";
+              power_icon_strip = " ";
+              space_icon = "•";
+              space_icon_strip = "1 2 3 4 5";
+              space_icon_color = "0xff2d4f67";
+              clock_icon = "";
+              dnd_icon = "";
+              clock_format = ''"%d/%m/%y %R"'';
+            };
+          };
+
           services.yabai = {
             enable = true;
             config = {
@@ -114,6 +155,7 @@
               #type database  DBuser  auth-method
               local all       all     trust
               host    b_connect_test_db    b_connect_test_user    127.0.0.1/32    scram-sha-256
+              host    b_connect_test_db    b_connect_test_user    ::1/128         scram-sha-256
             '';
           };
 
@@ -169,6 +211,9 @@
             home-manager.useUserPackages = true;
             home-manager.users.luketandjung = ./home.nix;
             home-manager.backupFileExtension = "hm-bak";
+            home-manager.sharedModules = [
+              inputs.zen-browser.homeModules.beta
+            ];
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
           }

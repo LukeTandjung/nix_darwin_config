@@ -14,6 +14,8 @@
   programs.home-manager.enable = true;
   programs.zsh.enable = true;
 
+  programs.fish.enable = true;
+
   # Adds config file to skhd
   services.skhd = {
     enable = true;
@@ -44,6 +46,7 @@
       cmd + shift - 0x17 : yabai -m window --space 5; yabai -m space --focus 5
 
       cmd - 0x0C : open -na kitty
+      cmd - 0x0E : open -a Finder
       cmd - 0x07 : kill $(yabai -m query --windows --window | jq '.pid')
     '';
   };
@@ -57,6 +60,7 @@
         path = lib.getExe pkgs.nodejs_22;
         npm_path = lib.getExe' pkgs.nodejs_22 "npm";
       };
+      tab_size = 2;
       languages = {
         Python = {
           language_servers = [
@@ -97,6 +101,11 @@
         auto-format = true;
         formatter.command = lib.getExe pkgs.nixfmt-rfc-style;
       }
+      {
+        name = "typst";
+        auto-format = true;
+        formatter.command = "typstyle";
+      }
     ];
   };
 
@@ -106,19 +115,18 @@
   # LazyDocker Configuration
   programs.lazydocker.enable = true;
 
-  # Yazi Configuration
-  programs.yazi.enable = true;
-
-  # Sketchybar Configuration
-  programs.sketchybar = {
+  # Zen Browser Configuration
+  programs.zen-browser = {
     enable = true;
-    service.enable = true;
-    configType = "bash";
-    config = {
-      source = ./config/sketchybar;
-      recursive = true;
+    profiles.luke = {
+      isDefault = true;
+      settings = {
+        "zen.welcome-screen.seen" = true;
+      };
     };
   };
+
+  stylix.targets.zen-browser.profileNames = [ "luke" ];
 
   # --- Package Management ---
   home.packages = [
