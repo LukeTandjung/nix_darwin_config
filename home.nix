@@ -91,6 +91,7 @@
 
   # Kitty Configuration
   programs.kitty = {
+    extraConfig = "shell fish";
     shellIntegration.enableFishIntegration = true;
   };
 
