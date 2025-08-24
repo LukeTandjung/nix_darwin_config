@@ -90,7 +90,9 @@
   programs.vesktop.enable = true;
 
   # Kitty Configuration
-  programs.kitty.enable = true;
+  programs.kitty = {
+    shellIntegration.enableFishIntegration = true;
+  };
 
   # Helix Configuration
   programs.helix = {
