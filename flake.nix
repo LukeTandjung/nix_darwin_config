@@ -45,20 +45,22 @@
           # List packages installed in system profile. To search by name, run:
           # $ nix-env -qaP | grep wgeti
 
-          environment.systemPackages = with pkgs; [
-            git
-            yabai
-            raycast
-            bartender
-            postgresql
-            dbeaver-bin
-            postman
-            notion-app
-            typst
-            typstyle
-            typst-live
-            tinymist
-          ];
+          environment = {
+            systemPackages = with pkgs; [
+              git
+              yabai
+              raycast
+              bartender
+              postgresql
+              dbeaver-bin
+              postman
+              notion-app
+              typst
+              typstyle
+              typst-live
+              tinymist
+            ];
+          };
 
           system.primaryUser = "luketandjung";
 

@@ -14,7 +14,12 @@
   programs.home-manager.enable = true;
   programs.zsh.enable = true;
 
-  programs.fish.enable = true;
+  # Adds config file to oh-my-poshi
+  programs.oh-my-posh = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = builtins.fromJSON (builtins.readFile ./kanagawa.omp.json);
+  };
 
   # Adds config file to skhd
   services.skhd = {
@@ -91,8 +96,7 @@
 
   # Kitty Configuration
   programs.kitty = {
-    extraConfig = "shell fish";
-    shellIntegration.enableFishIntegration = true;
+    enable = true;
   };
 
   # Helix Configuration
