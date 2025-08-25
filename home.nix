@@ -139,6 +139,9 @@
   home.packages = [
   ];
 
+  # This suppresses the login message that appears for Kitty!
+  home.file.".hushlogin".text = "";
+
   # --- MIGRATING YOUR RICE ---
   # Use home.file.source to manage raw configuration files.
   # Ensure these paths exist in your repo (e.g., ~/nix-darwin)

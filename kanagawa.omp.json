@@ -12,7 +12,7 @@
             "display_host": true
           },
           "style": "diamond",
-          "template": "{{ .UserName }} <#DCD7BA>on</> {{ .HostName }}",
+          "template": "{{ .UserName }} <#DCD7BA>on</>",
           "type": "session"
         },
         {
