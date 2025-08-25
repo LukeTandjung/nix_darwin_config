@@ -83,7 +83,7 @@
           "leading_diamond": "<#7FB4CA> ⟩ </><#C8C093>{</>",
           "properties": {
             "folder_icon": "",
-            "folder_separator_icon": " / ",
+            "folder_separator_icon": " → ",
             "home_icon": "home",
             "style": "agnoster_full"
           },
