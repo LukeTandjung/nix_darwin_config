@@ -7,33 +7,32 @@
       "segments": [
         {
           "foreground": "#7FB4CA",
-          "leading_diamond": "<#2D4F67> \ue0b2 </>",
+          "style": "plain",
           "properties": {
             "display_host": true
           },
-          "style": "diamond",
-          "template": "{{ .UserName }} <#DCD7BA>on</>",
+          "template": "{{ .UserName }} on {{ .HostName }}",
           "type": "session"
         },
         {
           "foreground": "#7E9CD8",
+          "style": "plain",
           "properties": {
-            "time_format": "Monday <#DCD7BA>at</> 3:04 PM"
+            "time_format": "Monday at 3:04 PM"
           },
-          "style": "diamond",
           "template": " {{ .CurrentDate | date .Format }} ",
           "type": "time"
         },
         {
           "foreground": "#957FB8",
+          "style": "plain",
           "properties": {
-            "branch_icon": "\ue725 ",
+            "branch_icon": "",
             "fetch_status": true,
             "fetch_upstream_icon": true,
             "fetch_worktree_count": true
           },
-          "style": "diamond",
-          "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
+          "template": " branch: {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} | changed: {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} staged: {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} | stashes: {{ .StashCount }}{{ end }} ",
           "type": "git"
         }
       ],
@@ -45,30 +44,31 @@
         {
           "foreground": "#98BB6C",
           "style": "plain",
+          "template": "",
           "type": "text"
         },
         {
           "foreground": "#98BB6C",
+          "style": "plain",
           "properties": {
             "style": "dallas",
             "threshold": 0
           },
-          "style": "diamond",
-          "template": " {{ .FormattedMs }}s <#DCD7BA>\ue601</>",
+          "template": " {{ .FormattedMs }}s ",
           "type": "executiontime"
         },
         {
+          "style": "plain",
           "properties": {
-            "root_icon": "\uf292 "
+            "root_icon": "#"
           },
-          "style": "diamond",
-          "template": " \uf0e7 ",
+          "template": "{{ if .Root }} [root] {{ end }}",
           "type": "root"
         },
         {
           "foreground": "#7AA89F",
-          "style": "diamond",
-          "template": " <#DCD7BA>MEM:</> {{ round .PhysicalPercentUsed .Precision }}% ({{ (div ((sub .PhysicalTotalMemory .PhysicalAvailableMemory)|float64) 1073741824.0) }}/{{ (div .PhysicalTotalMemory 1073741824.0) }}GB)",
+          "style": "plain",
+          "template": " MEM: {{ round .PhysicalPercentUsed .Precision }}% ({{ (div ((sub .PhysicalTotalMemory .PhysicalAvailableMemory)|float64) 1073741824.0) }}/{{ (div .PhysicalTotalMemory 1073741824.0) }}GB) ",
           "type": "sysinfo"
         }
       ],
@@ -80,16 +80,20 @@
       "segments": [
         {
           "foreground": "#C8C093",
-          "leading_diamond": "<#7FB4CA> \ue285 </><#C8C093>{</>",
+          "style": "plain",
+          "template": "+-",
+          "type": "text"
+        },
+        {
+          "foreground": "#C8C093",
+          "style": "plain",
           "properties": {
-            "folder_icon": "\uf07b",
-            "folder_separator_icon": " \uebcb ",
-            "home_icon": "home",
+            "folder_icon": "",
+            "folder_separator_icon": " / ",
+            "home_icon": "~",
             "style": "agnoster_full"
           },
-          "style": "diamond",
-          "template": " \ue5ff {{ .Path }} ",
-          "trailing_diamond": "<#C8C093>}</>",
+          "template": " in {{ .Path }} ",
           "type": "path"
         },
         {
@@ -101,7 +105,7 @@
             "always_enabled": true
           },
           "style": "plain",
-          "template": " \ue286 ",
+          "template": "{{ if gt .Code 0 }} [exit {{ .Code }}] {{ else }} $ {{ end }}",
           "type": "status"
         }
       ],
@@ -112,7 +116,7 @@
   "transient_prompt": {
     "background": "transparent",
     "foreground": "#C8C093",
-    "template": "\ue285 "
+    "template": "> "
   },
   "version": 3
 }
