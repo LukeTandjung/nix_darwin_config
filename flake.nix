@@ -94,6 +94,7 @@
           fonts.packages = with pkgs; [
             font-awesome
             jetbrains-mono
+            ibm-plex
           ];
 
           services.spacebar = {
