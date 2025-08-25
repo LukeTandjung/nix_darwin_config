@@ -97,6 +97,9 @@
   # Kitty Configuration
   programs.kitty = {
     enable = true;
+    settings = {
+      macos_option_as_alt = "yes";
+    };
   };
 
   # Helix Configuration
@@ -126,6 +129,16 @@
     enable = true;
   };
 
+  # Fastfetch Configuration
+  programs.fastfetch = {
+    enable = true;
+    settings = {
+      logo = {
+        source = "./hokusai.jpg";
+      };
+
+    };
+  };
   # Zellij Configuration
   programs.zellij = {
     enable = true;
@@ -149,6 +162,10 @@
         "zen.welcome-screen.seen" = true;
       };
     };
+  };
+
+  programs.spicetify = {
+    enable = true;
   };
 
   stylix.targets.zen-browser.profileNames = [ "luke" ];

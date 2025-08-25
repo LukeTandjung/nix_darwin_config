@@ -16,6 +16,7 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
   outputs =
@@ -26,6 +27,7 @@
       nix-darwin,
       home-manager,
       zen-browser,
+      spicetify-nix,
     }:
     let
       system = "aarch64-darwin";
@@ -216,6 +218,7 @@
             home-manager.backupFileExtension = "hm-bak";
             home-manager.sharedModules = [
               inputs.zen-browser.homeModules.beta
+              inputs.spicetify-nix.homeManagerModules.spicetify
             ];
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
