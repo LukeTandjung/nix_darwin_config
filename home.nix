@@ -116,6 +116,24 @@
     ];
   };
 
+  # Btop Configuration
+  programs.btop = {
+    enable = true;
+  };
+
+  # Htop Configuration
+  programs.htop = {
+    enable = true;
+  };
+
+  # Zellij Configuration
+  programs.zellij = {
+    enable = true;
+    enableZshIntegration = true;
+    attachExistingSession = true;
+    exitShellOnExit = true;
+  };
+
   # Spotify-player Configuration
   programs.spotify-player.enable = true;
 
