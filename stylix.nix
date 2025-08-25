@@ -1,11 +1,10 @@
-
 { pkgs, ... }:
 
 {
   # 1) Core engine settings
   stylix.enable = true;
   stylix.autoEnable = true;
-  
+
   # 2) Inline Base16 “Bauh Nord” scheme
   stylix.base16Scheme = {
     scheme = "Kanagawa";
@@ -30,10 +29,22 @@
 
   # 3) Fonts
   stylix.fonts = {
-    monospace = { package = pkgs.jetbrains-mono; name = "JetBrains Mono"; };
-    sansSerif = { package = pkgs.jetbrains-mono; name = "JetBrains Mono"; };
-    serif = { package = pkgs.jetbrains-mono; name = "JetBrains Mono"; };
-    emoji = { package = pkgs.font-awesome; name = "Font Awesome"; };
+    monospace = {
+      package = pkgs.jetbrains-mono;
+      name = "JetBrains Mono";
+    };
+    sansSerif = {
+      package = pkgs.jetbrains-mono;
+      name = "JetBrains Mono";
+    };
+    serif = {
+      package = pkgs.jetbrains-mono;
+      name = "JetBrains Mono";
+    };
+    emoji = {
+      package = pkgs.nerd-fonts.jetbrains-mono;
+      name = "JetBrains Mono NF";
+    };
 
     sizes = {
       applications = 14;
@@ -41,7 +52,7 @@
       popups = 12;
       terminal = 14;
     };
-   };
+  };
 
   # 4) Now these will be valid because stylix.nixosModules.stylix was already imported
- }
+}

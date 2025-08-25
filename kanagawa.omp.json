@@ -7,32 +7,33 @@
       "segments": [
         {
           "foreground": "#7FB4CA",
+          "leading_diamond": "<#2D4F67> \ue0b2 </>",
           "properties": {
             "display_host": true
           },
           "style": "diamond",
-          "template": "\uf007 {{ .UserName }} <#C8C093>on</> \uf108 {{ .HostName }}",
+          "template": "{{ .UserName }} <#DCD7BA>on</>",
           "type": "session"
         },
         {
           "foreground": "#7E9CD8",
           "properties": {
-            "time_format": "Monday <#C8C093>at</> 3:04 PM"
+            "time_format": "Monday <#DCD7BA>at</> 3:04 PM"
           },
           "style": "diamond",
-          "template": " \uf017 {{ .CurrentDate | date .Format }} ",
+          "template": " {{ .CurrentDate | date .Format }} ",
           "type": "time"
         },
         {
           "foreground": "#957FB8",
           "properties": {
-            "branch_icon": "\uf126 ",
+            "branch_icon": "\ue725 ",
             "fetch_status": true,
             "fetch_upstream_icon": true,
             "fetch_worktree_count": true
           },
           "style": "diamond",
-          "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf187 {{ .StashCount }}{{ end }} ",
+          "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
           "type": "git"
         }
       ],
@@ -44,8 +45,7 @@
         {
           "foreground": "#98BB6C",
           "style": "plain",
-          "type": "text",
-          "template": ""
+          "type": "text"
         },
         {
           "foreground": "#98BB6C",
@@ -54,7 +54,7 @@
             "threshold": 0
           },
           "style": "diamond",
-          "template": " {{ .FormattedMs }} <#C8C093>\uf2f2</>",
+          "template": " {{ .FormattedMs }}s <#DCD7BA>\ue601</>",
           "type": "executiontime"
         },
         {
@@ -68,7 +68,7 @@
         {
           "foreground": "#7AA89F",
           "style": "diamond",
-          "template": " <#C8C093>MEM:</> {{ round .PhysicalPercentUsed .Precision }}% ({{ (div ((sub .PhysicalTotalMemory .PhysicalAvailableMemory)|float64) 1073741824.0) }}/{{ (div .PhysicalTotalMemory 1073741824.0) }}GB) \uf2db",
+          "template": " <#DCD7BA>MEM:</> {{ round .PhysicalPercentUsed .Precision }}% ({{ (div ((sub .PhysicalTotalMemory .PhysicalAvailableMemory)|float64) 1073741824.0) }}/{{ (div .PhysicalTotalMemory 1073741824.0) }}GB)",
           "type": "sysinfo"
         }
       ],
@@ -80,20 +80,16 @@
       "segments": [
         {
           "foreground": "#C8C093",
-          "style": "plain",
-          "template": "─",
-          "type": "text"
-        },
-        {
-          "foreground": "#7FB4CA",
+          "leading_diamond": "<#7FB4CA> \ue285 </><#C8C093>{</>",
           "properties": {
             "folder_icon": "\uf07b",
-            "folder_separator_icon": " \uf061 ",
-            "home_icon": "\uf015",
+            "folder_separator_icon": " \uebcb ",
+            "home_icon": "home",
             "style": "agnoster_full"
           },
           "style": "diamond",
-          "template": " \uf07b {{ .Path }} ",
+          "template": " \ue5ff {{ .Path }} ",
+          "trailing_diamond": "<#C8C093>}</>",
           "type": "path"
         },
         {
@@ -105,7 +101,7 @@
             "always_enabled": true
           },
           "style": "plain",
-          "template": " \uf105 ",
+          "template": " \ue286 ",
           "type": "status"
         }
       ],
@@ -116,7 +112,7 @@
   "transient_prompt": {
     "background": "transparent",
     "foreground": "#C8C093",
-    "template": "\uf105 "
+    "template": "\ue285 "
   },
   "version": 3
 }
