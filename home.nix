@@ -81,6 +81,9 @@
       show_edit_predictions = false;
       buffer_font_size = lib.mkForce 14.0;
       ui_font_size = lib.mkForce 14.0;
+      terminal = {
+        font_family = "JetBrainsMono NF";
+      };
     };
   };
 
